@@ -11,11 +11,12 @@ public class BattleRing : MonoBehaviour {
     public float buffer;
     public float camera_rotat;
     public float pos;//生成的位置 百分比
-    public GameObject button; //五個按鈕
-    public GameObject button1;
-    public GameObject button2;
-    public GameObject button3;
-    public GameObject button4;
+    public GameObject Attact; //五個按鈕
+    public GameObject HAttact;
+    public GameObject Skill;
+    public GameObject Defence;
+    public GameObject Backpack;
+    public GameObject Move;
     public GameObject now_camera;
     public static bool iscancel = false;
     public Vector3 offset;
@@ -36,23 +37,26 @@ public class BattleRing : MonoBehaviour {
         position.y += offset.y;
         //position.z += offset.z;
         transform.position = position;
-        button.transform.LookAt(now_camera.transform.position);
+        Attact.transform.LookAt(now_camera.transform.position);
         transform.rotation = Quaternion.Euler(rotat);
         //transform.RotateAround(now_camera.transform.position, Vector3.up, rotat.y);
-        first_angle_x = button.transform.rotation.eulerAngles.x;
+        first_angle_x = Attact.transform.rotation.eulerAngles.x;
         first_angle_y = transform.rotation.eulerAngles.y;
         SetButton();
-        Zoom_In(button);
+        Zoom_In(Attact);
+        GetComponent<SphereCollider>().enabled = true;
     }
 
     void OnDisable()
     {
         gameObject.transform.rotation = new Quaternion(0, 0, 0, 0);
-        button.transform.rotation = new Quaternion(0, 0, 0, 0);
-        button1.transform.rotation = new Quaternion(0, 0, 0, 0);
-        button2.transform.rotation = new Quaternion(0, 0, 0, 0);
-        button3.transform.rotation = new Quaternion(0, 0, 0, 0);
-        button4.transform.rotation = new Quaternion(0, 0, 0, 0);
+        Attact.transform.rotation = new Quaternion(0, 0, 0, 0);
+        HAttact.transform.rotation = new Quaternion(0, 0, 0, 0);
+        Skill.transform.rotation = new Quaternion(0, 0, 0, 0);
+        Defence.transform.rotation = new Quaternion(0, 0, 0, 0);
+        Backpack.transform.rotation = new Quaternion(0, 0, 0, 0);
+        Move.transform.rotation = new Quaternion(0, 0, 0, 0);
+        GetComponent<SphereCollider>().enabled = false;
     }
 
     void OnMouseDown()                                                                      //滑鼠按下 設定初始位置
@@ -71,21 +75,23 @@ public class BattleRing : MonoBehaviour {
         angle = dragPosition.x - firstPosition.x;
 
         transform.Rotate(0, -angle * speed, 0);
-        button.transform.Rotate(0, angle * speed, 0);//旋轉每個按鈕 持續正面朝向鏡頭
-        button1.transform.Rotate(0, angle * speed, 0);
-        button2.transform.Rotate(0, angle * speed, 0);
-        button3.transform.Rotate(0, angle * speed, 0);
-        button4.transform.Rotate(0, angle * speed, 0);
+        Attact.transform.Rotate(0, angle * speed, 0);//旋轉每個按鈕 持續正面朝向鏡頭
+        HAttact.transform.Rotate(0, angle * speed, 0);
+        Skill.transform.Rotate(0, angle * speed, 0);
+        Defence.transform.Rotate(0, angle * speed, 0);
+        Backpack.transform.Rotate(0, angle * speed, 0);
+        Move.transform.Rotate(0, angle * speed, 0);
         SetButton();
     }
 
     void SetButton()
     {
-        button.transform.LookAt(now_camera.transform.position);
-        button1.transform.LookAt(now_camera.transform.position);
-        button2.transform.LookAt(now_camera.transform.position);
-        button3.transform.LookAt(now_camera.transform.position);
-        button4.transform.LookAt(now_camera.transform.position);
+        Attact.transform.LookAt(now_camera.transform.position);
+        HAttact.transform.LookAt(now_camera.transform.position);
+        Skill.transform.LookAt(now_camera.transform.position);
+        Defence.transform.LookAt(now_camera.transform.position);
+        Backpack.transform.LookAt(now_camera.transform.position);
+        Move.transform.LookAt(now_camera.transform.position);
     }
 
     void OnMouseUp()
@@ -140,88 +146,103 @@ public class BattleRing : MonoBehaviour {
         {
             buffer += 360;
         }
-        if (buffer > 0 && buffer < 72)
+        if (buffer > 0 && buffer < 60)
         {
-            if (buffer <= 36)
+            if (buffer <= 30)
             {
                 buffer = 0;
-                Zoom_In(button);
+                Zoom_In(Attact);
             }
-            else if (buffer > 36)
+            else if (buffer > 30)
             {
-                buffer = 72;
-                Zoom_In(button4);
+                buffer = 60;
+                Zoom_In(Move);
             }
         }
-        else if (buffer > 72 && buffer < 144)
+        else if (buffer > 60 && buffer < 120)
         {
-            if (buffer <= 108)
+            if (buffer <= 90)
             {
-                buffer = 72;
-                Zoom_In(button4);
+                buffer = 60;
+                Zoom_In(Move);
             }
-            else if (buffer > 108)
+            else if (buffer > 90)
             {
-                buffer = 144;
-                Zoom_In(button3);
+                buffer = 120;
+                Zoom_In(Backpack);
             }
         }
-        else if (buffer > 144 && buffer < 216)
+        else if (buffer > 120 && buffer < 180)
         {
-            if (buffer <= 180)
+            if (buffer <= 150)
             {
-                buffer = 144;
-                Zoom_In(button3);
+                buffer = 120;
+                Zoom_In(Backpack);
             }
-            else if (buffer > 180)
+            else if (buffer > 150)
             {
-                buffer = 216;
-                Zoom_In(button2);
+                buffer = 180;
+                Zoom_In(Defence);
             }
         }
-        else if (buffer > 216 && buffer < 288)
+        else if (buffer > 180 && buffer < 240)
         {
-            if (buffer <= 252)
+            if (buffer <= 210)
             {
-                buffer = 216;
-                Zoom_In(button2);
+                buffer = 180;
+                Zoom_In(Defence);
             }
-            else if (buffer > 252)
+            else if (buffer > 210)
             {
-                buffer = 288;
-                Zoom_In(button1);
+                buffer = 240;
+                Zoom_In(Skill);
             }
         }
-        else if (buffer > 288 && buffer < 360)
+        else if (buffer > 240 && buffer < 300)
         {
-            if (buffer <= 324)
+            if (buffer <= 270)
             {
-                buffer = 288;
-                Zoom_In(button1);
+                buffer = 240;
+                Zoom_In(Skill);
             }
-            else if (buffer > 324)
+            else if (buffer > 270)
+            {
+                buffer = 300;
+                Zoom_In(HAttact);
+            }
+        }
+        else if (buffer > 300 && buffer < 360)
+        {
+            if (buffer <= 330)
+            {
+                buffer = 300;
+                Zoom_In(HAttact);
+            }
+            else if (buffer > 330)
             {
                 buffer = 360;
-                Zoom_In(button);
+                Zoom_In(Attact);
             }
         }
         buffer += first_angle_y;
         rotat = Quaternion.Euler(0, buffer, 0);
         transform.rotation = rotat;
-        button.transform.rotation = Quaternion.Euler(first_angle_x, 180 + first_angle_y, 0);
-        button1.transform.rotation = Quaternion.Euler(first_angle_x, 180 + first_angle_y, 0);
-        button2.transform.rotation = Quaternion.Euler(first_angle_x, 180 + first_angle_y, 0);
-        button3.transform.rotation = Quaternion.Euler(first_angle_x, 180 + first_angle_y, 0);
-        button4.transform.rotation = Quaternion.Euler(first_angle_x, 180 + first_angle_y, 0);
+        Attact.transform.rotation = Quaternion.Euler(first_angle_x, 180 + first_angle_y, 0);
+        HAttact.transform.rotation = Quaternion.Euler(first_angle_x, 180 + first_angle_y, 0);
+        Skill.transform.rotation = Quaternion.Euler(first_angle_x, 180 + first_angle_y, 0);
+        Defence.transform.rotation = Quaternion.Euler(first_angle_x, 180 + first_angle_y, 0);
+        Backpack.transform.rotation = Quaternion.Euler(first_angle_x, 180 + first_angle_y, 0);
+        Move.transform.rotation = Quaternion.Euler(first_angle_x, 180 + first_angle_y, 0);
     }
 
     void Zoom_Out()
     {
-        button.transform.localScale = new Vector3(1, 1, 1);
-        button1.transform.localScale = new Vector3(1, 1, 1);
-        button2.transform.localScale = new Vector3(1, 1, 1);
-        button3.transform.localScale = new Vector3(1, 1, 1);
-        button4.transform.localScale = new Vector3(1, 1, 1);
+        Attact.transform.localScale = new Vector3(1, 1, 1);
+        HAttact.transform.localScale = new Vector3(1, 1, 1);
+        Skill.transform.localScale = new Vector3(1, 1, 1);
+        Defence.transform.localScale = new Vector3(1, 1, 1);
+        Backpack.transform.localScale = new Vector3(1, 1, 1);
+        Move.transform.localScale = new Vector3(1, 1, 1);
     }
 
     void Zoom_In(GameObject a)//放大按鈕
@@ -245,21 +266,21 @@ public class BattleRing : MonoBehaviour {
     //void Min_Rotate()
     //{
     //    transform.Rotate(0, buffer, 0);
-    //    button.transform.Rotate(0, -buffer, 0);//旋轉每個按鈕 持續正面朝向鏡頭
-    //    button1.transform.Rotate(0, -buffer, 0);
-    //    button2.transform.Rotate(0, -buffer, 0);
-    //    button3.transform.Rotate(0, -buffer, 0);
-    //    button4.transform.Rotate(0, -buffer, 0);
+    //    Attact.transform.Rotate(0, -buffer, 0);//旋轉每個按鈕 持續正面朝向鏡頭
+    //    HAttact.transform.Rotate(0, -buffer, 0);
+    //    Skill.transform.Rotate(0, -buffer, 0);
+    //    Defence.transform.Rotate(0, -buffer, 0);
+    //    Backpack.transform.Rotate(0, -buffer, 0);
     //}
 
     //void Max_Rotate()
     //{
     //    transform.Rotate(0, -buffer, 0);
-    //    button.transform.Rotate(0, buffer, 0);//旋轉每個按鈕 持續正面朝向鏡頭
-    //    button1.transform.Rotate(0, buffer, 0);
-    //    button2.transform.Rotate(0, buffer, 0);
-    //    button3.transform.Rotate(0, buffer, 0);
-    //    button4.transform.Rotate(0, buffer, 0);
+    //    Attact.transform.Rotate(0, buffer, 0);//旋轉每個按鈕 持續正面朝向鏡頭
+    //    HAttact.transform.Rotate(0, buffer, 0);
+    //    Skill.transform.Rotate(0, buffer, 0);
+    //    Defence.transform.Rotate(0, buffer, 0);
+    //    Backpack.transform.Rotate(0, buffer, 0);
     //}
 
     public void InCancel()

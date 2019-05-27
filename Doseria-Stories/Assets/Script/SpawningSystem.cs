@@ -12,9 +12,9 @@ public class SpawningSystem : MonoBehaviour {
         {
             BattleInfo.SetCharacterInbattle(all_character[i].name, all_character[i].characterObj, all_character[i].Hp, all_character[i].Ag, all_character[i].At);
         }
-        Angier = Instantiate(BattleInfo.characterInbattle[0].CharacterPrefab, new Vector3(2.5f, 0.5f, 0), Quaternion.identity);
+        Angier = Instantiate(BattleInfo.characterInbattle[0].CharacterPrefab, new Vector3(2.5f, 0.036f, 0), Quaternion.Euler(0, 215, 0));
         BattleInfo.characterInbattle[0].SetCharacterObj(Angier);
-        Boromi = Instantiate(BattleInfo.characterInbattle[1].CharacterPrefab, new Vector3(-2.5f, 0.75f, 0), Quaternion.identity);
+        Boromi = Instantiate(BattleInfo.characterInbattle[1].CharacterPrefab, new Vector3(-2.5f, 0.036f, 0), Quaternion.Euler(0,145,0));
         BattleInfo.characterInbattle[1].SetCharacterObj(Boromi);
     }
 }

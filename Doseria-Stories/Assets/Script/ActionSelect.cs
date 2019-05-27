@@ -23,34 +23,42 @@ public class ActionSelect : MonoBehaviour {
         Debug.Log("Skill");
     }
 
+    void Defence()
+    {
+        Debug.Log("Defence");
+    }
+
     void Backpack()
     {
         Debug.Log("Backpack");
     }
 
-    void Botton5()
+    void Move()
     {
-        Debug.Log("Botton5");
+        Debug.Log("Move");
     }
 
     void Action(string n)
     {
         switch (n)
         {
-            case "Botton":
+            case "Attact":
                 Attact();
                 break;
-            case "Botton (1)":
+            case "HAttact":
                 HAttact();
                 break;
-            case "Botton (2)":
+            case "Skill":
                 Skill();
                 break;
-            case "Botton (3)":
+            case "Defence":
+                Defence();
+                break;
+            case "Backpack":
                 Backpack();
                 break;
-            case "Botton (4)":
-                Botton5();
+            case "Move":
+                Move();
                 break;
             default:
                 break;

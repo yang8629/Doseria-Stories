@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Angelu
   m_EditorClassIdentifier: 
   name: Angelu
-  characterObj: {fileID: 7239808466250326266, guid: 119ccff3489f0884492e1b3d87cbc5bd,
-    type: 3}
+  characterObj: {fileID: 100060, guid: be71dc03f4c3890439dd2efb271640c4, type: 3}
   Hp: 100
   Def: 0
   Ag: 3

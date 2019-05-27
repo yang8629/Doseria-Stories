@@ -5,6 +5,7 @@ using UnityEngine;
 //紀錄攻擊的方式與當前行動者
 public class ActionController : MonoBehaviour {
     public int player_count;
+    public int speed;
     public GameObject battle_ring;
     public GameObject zoomin_camera;
 
@@ -31,7 +32,7 @@ public class ActionController : MonoBehaviour {
             {
                 if (BattleInfo.characterInbattle[i].Moving == false && BattleInfo.characterInbattle[i].Dead == false)
                 {
-                    BattleInfo.characterInbattle[i].Timer += Time.deltaTime * BattleInfo.characterInbattle[i].Ag;
+                    BattleInfo.characterInbattle[i].Timer += Time.deltaTime * BattleInfo.characterInbattle[i].Ag * speed;
                     Debug.Log(BattleInfo.characterInbattle[i].Name + ": Timer= " + BattleInfo.characterInbattle[i].Timer);
                     if (BattleInfo.characterInbattle[i].Timer > 10)
                     {
