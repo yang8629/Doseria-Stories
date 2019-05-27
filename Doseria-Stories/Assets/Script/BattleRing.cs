@@ -45,6 +45,12 @@ public class BattleRing : MonoBehaviour {
         SetButton();
         Zoom_In(Attact);
         GetComponent<SphereCollider>().enabled = true;
+        Attact.GetComponent<SphereCollider>().enabled = true;
+        HAttact.GetComponent<SphereCollider>().enabled = true;
+        Skill.GetComponent<SphereCollider>().enabled = true;
+        Defence.GetComponent<SphereCollider>().enabled = true;
+        Backpack.GetComponent<SphereCollider>().enabled = true;
+        Move.GetComponent<SphereCollider>().enabled = true;
     }
 
     void OnDisable()
@@ -57,6 +63,12 @@ public class BattleRing : MonoBehaviour {
         Backpack.transform.rotation = new Quaternion(0, 0, 0, 0);
         Move.transform.rotation = new Quaternion(0, 0, 0, 0);
         GetComponent<SphereCollider>().enabled = false;
+        Attact.GetComponent<SphereCollider>().enabled = false;
+        HAttact.GetComponent<SphereCollider>().enabled = false;
+        Skill.GetComponent<SphereCollider>().enabled = false;
+        Defence.GetComponent<SphereCollider>().enabled = false;
+        Backpack.GetComponent<SphereCollider>().enabled = false;
+        Move.GetComponent<SphereCollider>().enabled = false;
     }
 
     void OnMouseDown()                                                                      //滑鼠按下 設定初始位置

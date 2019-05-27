@@ -36,7 +36,7 @@ public class ActionSelect : MonoBehaviour {
     void Move()
     {
         Debug.Log("Move");
-    }
+    } 
 
     void Action(string n)
     {

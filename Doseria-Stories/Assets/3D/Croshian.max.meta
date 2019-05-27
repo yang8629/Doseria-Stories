@@ -372,6 +372,78 @@ ModelImporter:
     4300138: Box018
     4300140: Circle005
     4300142: Circle004
+    6400000: Box001
+    6400002: Box002
+    6400004: Box003
+    6400006: Box004
+    6400008: Box005
+    6400010: Box006
+    6400012: Box007
+    6400014: Box009
+    6400016: Box010
+    6400018: Box011
+    6400020: Box012
+    6400022: Box013
+    6400024: Box014
+    6400026: Box015
+    6400028: Box018
+    6400030: Box019
+    6400032: Box020
+    6400034: Box021
+    6400036: Box022
+    6400038: Box023
+    6400040: Box024
+    6400042: Box025
+    6400044: Box026
+    6400046: Box027
+    6400048: Box030
+    6400050: Box033
+    6400052: Box034
+    6400054: Box035
+    6400056: Box036
+    6400058: Box037
+    6400060: Box040
+    6400062: Box041
+    6400064: Box042
+    6400066: Circle001
+    6400068: Circle002
+    6400070: Circle003
+    6400072: Circle004
+    6400074: Circle005
+    6400076: Cylinder001
+    6400078: Cylinder002
+    6400080: Cylinder003
+    6400082: Cylinder004
+    6400084: Door002
+    6400086: Door1
+    6400088: House2
+    6400090: House2 1
+    6400092: Line001
+    6400094: Line002
+    6400096: Line003
+    6400098: Line004
+    6400100: Line006
+    6400102: Line007
+    6400104: Line008
+    6400106: Line009
+    6400108: Line010
+    6400110: Line011
+    6400112: Plane002
+    6400114: Plane003
+    6400116: Plane004
+    6400118: Plane005
+    6400120: Plane006
+    6400122: Plane007
+    6400124: Plane008
+    6400126: Plane009
+    6400128: Plane010
+    6400130: Plane011
+    6400132: Plane012
+    6400134: plane1
+    6400136: Rectangle001
+    6400138: roof1
+    6400140: shop1
+    6400142: shop2
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -405,7 +477,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 0.2
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1

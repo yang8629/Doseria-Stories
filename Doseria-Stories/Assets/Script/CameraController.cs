@@ -70,7 +70,6 @@ public class CameraController : MonoBehaviour {
             CancelInvoke("ZoomIn");
             BattleInfo.camera_target_distance = target.transform.position - transform.position;
             battle_ring.SetActive(true);
-            Time.timeScale = 0;
             number = 1.84f;
         }
     }

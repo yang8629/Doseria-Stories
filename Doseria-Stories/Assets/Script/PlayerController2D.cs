@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Playercontroller : MonoBehaviour
+public class PlayerController2D : MonoBehaviour
 {
     protected Joystick joystick;                                                //宣告虛擬搖桿
     public float speed;
@@ -22,7 +22,7 @@ public class Playercontroller : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
-        InvokeRepeating("VolumeUp", 0.1f, 0.1f);
+        //InvokeRepeating("VolumeUp", 0.1f, 0.1f);
     }
 
     void FixedUpdate()
@@ -31,18 +31,18 @@ public class Playercontroller : MonoBehaviour
         float moveVertical = joystick.Vertical;
         if (moveHorizontal == 0 && moveVertical == 0)
         {
-            //animator.Play("ExploreIdle");
-            //animator.SetBool("isIdle", true);
+            animator.Play("Angelu2DIdle");
+            animator.SetBool("isIdle", true);
             //animator.SetBool("isForward", false);
             //animator.SetBool("isBack", false);
-            //animator.SetBool("isLeft", false);
-            //animator.SetBool("isRight", false);
+            animator.SetBool("isLeft", false);
+            animator.SetBool("isRight", false);
         }
         else if (moveHorizontal >= 0 && moveVertical > 0)//第一象限
         {
             if (moveHorizontal < moveVertical)
             {
-                ExploreForward();
+                ExploreRight();
             }
             else
             {
@@ -57,7 +57,7 @@ public class Playercontroller : MonoBehaviour
             }
             else
             {
-                ExploreForward();
+                ExploreLeft();
             }
 
         }
@@ -65,7 +65,7 @@ public class Playercontroller : MonoBehaviour
         {
             if (-moveHorizontal < -moveVertical)
             {
-                ExploreBack();
+                ExploreLeft();
             }
             else
             {
@@ -80,33 +80,33 @@ public class Playercontroller : MonoBehaviour
             }
             else
             {
-                ExploreBack();
+                ExploreRight();
             }
         }
-        Vector3 movement = new Vector3(moveHorizontal, moveVertical, 0.0f);
+        Vector3 movement = new Vector3(-moveHorizontal, 0.0f, -moveVertical);
         transform.position += (movement * speed);
     }
 
     void ExploreLeft()
     {
-    //    animator.Play("ExploreLeft");
-    //    animator.SetBool("isIdle", false);
-    //    animator.SetBool("isForward", false);
-    //    animator.SetBool("isBack", false);
-    //    animator.SetBool("isLeft", true);
-    //    animator.SetBool("isRight", false);
-        player_pointer.transform.rotation = Quaternion.Euler(0, 0, 90);
+        animator.Play("Angelu2DLeft");
+        animator.SetBool("isIdle", false);
+        //    animator.SetBool("isForward", false);
+        //    animator.SetBool("isBack", false);
+        animator.SetBool("isLeft", true);
+        animator.SetBool("isRight", false);
+        //    player_pointer.transform.rotation = Quaternion.Euler(0, 0, 90);
     }
 
     void ExploreRight()
     {
-        //animator.Play("ExploreRight");
-        //animator.SetBool("isIdle", false);
+        animator.Play("Angelu2DRight");
+        animator.SetBool("isIdle", false);
         //animator.SetBool("isForward", false);
         //animator.SetBool("isBack", false);
-        //animator.SetBool("isLeft", false);
-        //animator.SetBool("isRight", true);
-        player_pointer.transform.rotation = Quaternion.Euler(0, 0, -90);
+        animator.SetBool("isLeft", false);
+        animator.SetBool("isRight", true);
+        //player_pointer.transform.rotation = Quaternion.Euler(0, 0, -90);
     }
 
     void ExploreForward()
@@ -117,7 +117,7 @@ public class Playercontroller : MonoBehaviour
         //animator.SetBool("isBack", false);
         //animator.SetBool("isLeft", false);
         //animator.SetBool("isRight", false);
-        player_pointer.transform.rotation = Quaternion.Euler(0, 0, 0);
+        //player_pointer.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     void ExploreBack()
@@ -128,7 +128,7 @@ public class Playercontroller : MonoBehaviour
         //animator.SetBool("isBack", true);
         //animator.SetBool("isLeft", false);
         //animator.SetBool("isRight", false);
-        player_pointer.transform.rotation = Quaternion.Euler(0, 0, 180);
+        //player_pointer.transform.rotation = Quaternion.Euler(0, 0, 180);
     }
 
     //void OnTriggerEnter(Collider other)                                         //接觸到怪物時進入戰鬥場景

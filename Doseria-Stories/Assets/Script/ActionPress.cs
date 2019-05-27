@@ -8,5 +8,6 @@ public class ActionPress : MonoBehaviour {
     void OnMouseDown()
     {
         ActionSelect.SendMessage("Action", gameObject.name);
+        Debug.Log(gameObject.name);
     }
 }
