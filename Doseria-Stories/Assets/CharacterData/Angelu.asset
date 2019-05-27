@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24078d930eec45c4fa4657c88d354fef, type: 3}
   m_Name: Angelu
   m_EditorClassIdentifier: 
-  name: 
-  characterObj: {fileID: 0}
-  Hp: 0
+  name: Angelu
+  characterObj: {fileID: 7239808466250326266, guid: 119ccff3489f0884492e1b3d87cbc5bd,
+    type: 3}
+  Hp: 100
   Def: 0
-  Ag: 0
+  Ag: 3
   At: 0
